@@ -1,0 +1,32 @@
+@echo off
+set ver=1.9
+title Microsoft Edge Uninstaller %ver%
+echo Microsoft Edge Uninstaller
+echo Version %ver%
+echo.
+echo This software is a MicrosoftEdge uninstall tool using Winget.
+echo.
+echo After running this software, it is recommended to do "sfc /scannow" later.
+echo.
+echo If you have any problems running this software, I do not guarantee it at all.
+echo.
+echo.
+echo [Do you want to start the uninstallation?]
+echo.
+echo.
+set /p ch="Please enter Y If you AGREE :"
+if %ch% == y (goto main)
+if %ch% == Y (goto main)
+cls
+echo Canceled
+echo Press Any key to Exit
+set /p ch=""
+exit
+:main
+echo Making File...
+echo @echo off>>temp.bat
+echo echo Start Uninstall Microsoft Edge>>temp.bat
+echo winget uninstall microsoft.edge>>temp.bat
+echo shutdown -r -t 05 -c "Uninstall OK! Windows is Reboot Now!">>temp.bat
+temp.bat
+exit
